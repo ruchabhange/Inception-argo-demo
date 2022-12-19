@@ -24,10 +24,24 @@ patches:
         value: 8021
   - target:
       kind: Service
+      name: productcatalogue
+    patch: |-
+      - op: replace
+        path: /spec/ports/0/targetPort
+        value: 8021
+  - target:
+      kind: Service
       name: shopfront        
     patch: |-
       - op: replace
         path: /spec/ports/0/port
+        value: 8020
+  - target:
+      kind: Service
+      name: shopfront        
+    patch: |-
+      - op: replace
+        path: /spec/ports/0/targetPort
         value: 8020
   - target:
       kind: Deployment

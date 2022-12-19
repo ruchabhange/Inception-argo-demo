@@ -3,6 +3,8 @@ kind: Kustomization
 
 bases:
   - ../../base
+resources:
+- post-sync-test.yaml
 
 commonLabels:
   purpose: Inception-demo

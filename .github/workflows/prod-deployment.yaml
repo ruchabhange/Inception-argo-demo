@@ -1,6 +1,10 @@
 name: Prod Deployment
 on: [workflow_dispatch]
-jobs:    
+jobs:
+   build:
+    name: Deploying image to prod env
+    runs-on: ubuntu-latest
+    steps:
     -  name: Update Version for productcatalouge image
        #if: steps.productcatalouge.outputs.any_changed == 'true'
        run: |

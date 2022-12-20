@@ -10,7 +10,7 @@ commonLabels:
 
 replicas:
  - name: productcatalogue
-   count: 0
+   count: 3
  - name: shopfront
    count: 3
 
@@ -35,12 +35,12 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: 'ruchabhange/productcatalouge-image:a66f1a1c7e0cb71a324f6ab9a0dbcae3623a4de1'
+        value: 'ruchabhange/productcatalouge-image:92464438c0e96c4e17b7d1a3aea0a1cb62a506d7'
   - target:
       kind: Deployment
       name: shopfront
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: 'ruchabhange/shopfront-image:a66f1a1c7e0cb71a324f6ab9a0dbcae3623a4de1'
+        value: 'ruchabhange/shopfront-image:92464438c0e96c4e17b7d1a3aea0a1cb62a506d7'
 

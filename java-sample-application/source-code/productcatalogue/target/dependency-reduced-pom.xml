@@ -53,10 +53,6 @@
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
       </plugin>
-      <plugin>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>3.0.0-M7</version>
-      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -78,14 +74,6 @@
       </exclusions>
     </dependency>
   </dependencies>
-  <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>3.0.0-M7</version>
-      </plugin>
-    </plugins>
-  </reporting>
   <distributionManagement>
     <repository>
       <id>github</id>

@@ -8,7 +8,6 @@ import io.dropwizard.setup.Environment;
 import uk.co.danielbryant.djshopping.productcatalogue.healthchecks.BasicHealthCheck;
 import uk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration;
 import uk.co.danielbryant.djshopping.productcatalogue.resources.ProductResource;
-import org.junit.Test;
 
 public class ProductServiceApplication extends Application<ProductServiceConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -24,7 +23,7 @@ public class ProductServiceApplication extends Application<ProductServiceConfigu
     public void initialize(Bootstrap<ProductServiceConfiguration> bootstrap) {
         // nothing to do yet
     }
-    @Test
+    
     @Override
     public void run(ProductServiceConfiguration config,
                     Environment environment) {

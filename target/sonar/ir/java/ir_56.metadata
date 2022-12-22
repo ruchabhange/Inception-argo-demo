@@ -1,3 +1,1 @@
-uk.co.danielbryant.djshopping.productcatalogue.services.ProductService#getAllProducts()Ljava/util/List;
-java.util.ArrayList#instance-init#
-java.util.ArrayList#<init>(Ljava/util/Collection;)V
+uk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#instance-init#

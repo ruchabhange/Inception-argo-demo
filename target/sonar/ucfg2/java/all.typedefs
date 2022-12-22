@@ -429,7 +429,97 @@ getError()Ncom.codahale.metrics.health.HealthCheck$Result#getError()Ljava/lang/
 	builder()ocom.codahale.metrics.health.HealthCheck$Result#builder()Lcom/codahale/metrics/health/HealthCheck$ResultBuilder;Î
 [<init>(ZLjava/lang/String;Ljava/lang/Throwable;Ljava/util/Map;Lcom/codahale/metrics/Clock;)ãcom.codahale.metrics.health.HealthCheck$Result#<init>(ZLjava/lang/String;Ljava/lang/Throwable;Ljava/util/Map;Lcom/codahale/metrics/Clock;)Vî
 0<init>(ZLjava/lang/String;Ljava/lang/Throwable;)`com.codahale.metrics.health.HealthCheck$Result#<init>(ZLjava/lang/String;Ljava/lang/Throwable;)VZ
-getDetails()Jcom.codahale.metrics.health.HealthCheck$Result#getDetails()Ljava/util/Map;Å
+getDetails()Jcom.codahale.metrics.health.HealthCheck$Result#getDetails()Ljava/util/Map;∑
+io.dropwizard.Applicationjava.lang.ObjectO
+run([Ljava/lang/String;)3io.dropwizard.Application#run([Ljava/lang/String;)V]
+getConfigurationClass()Bio.dropwizard.Application#getConfigurationClass()Ljava/lang/Class;;
+onFatalError())io.dropwizard.Application#onFatalError()VB
+	getName()5io.dropwizard.Application#getName()Ljava/lang/String;/
+<init>()#io.dropwizard.Application#<init>()VC
+bootstrapLogging()-io.dropwizard.Application#bootstrapLogging()Vb
+bootstrapLogLevel()Kio.dropwizard.Application#bootstrapLogLevel()Lch/qos/logback/classic/Level;Ö
+3addDefaultCommands(Lio/dropwizard/setup/Bootstrap;)Nio.dropwizard.Application#addDefaultCommands(Lio/dropwizard/setup/Bootstrap;)Vu
++initialize(Lio/dropwizard/setup/Bootstrap;)Fio.dropwizard.Application#initialize(Lio/dropwizard/setup/Bootstrap;)Vµ
+Huk.co.danielbryant.djshopping.productcatalogue.ProductServiceApplicationio.dropwizard.Applicationq
+	getName()duk.co.danielbryant.djshopping.productcatalogue.ProductServiceApplication#getName()Ljava/lang/String;^
+<init>()Ruk.co.danielbryant.djshopping.productcatalogue.ProductServiceApplication#<init>()V–
+Ärun(Luk/co/danielbryant/djshopping/productcatalogue/configuration/ProductServiceConfiguration;Lio/dropwizard/setup/Environment;) uk.co.danielbryant.djshopping.productcatalogue.ProductServiceApplication#run(Luk/co/danielbryant/djshopping/productcatalogue/configuration/ProductServiceConfiguration;Lio/dropwizard/setup/Environment;)VÄ
+main([Ljava/lang/String;)cuk.co.danielbryant.djshopping.productcatalogue.ProductServiceApplication#main([Ljava/lang/String;)V§
++initialize(Lio/dropwizard/setup/Bootstrap;)uuk.co.danielbryant.djshopping.productcatalogue.ProductServiceApplication#initialize(Lio/dropwizard/setup/Bootstrap;)V¨
+io.dropwizard.Configurationjava.lang.Objecth
+getServerFactory()Rio.dropwizard.Configuration#getServerFactory()Lio/dropwizard/server/ServerFactory;l
+getMetricsFactory()Uio.dropwizard.Configuration#getMetricsFactory()Lio/dropwizard/metrics/MetricsFactory;1
+<init>()%io.dropwizard.Configuration#<init>()VF
+
+toString()8io.dropwizard.Configuration#toString()Ljava/lang/String;ç
+6setServerFactory(Lio/dropwizard/server/ServerFactory;)Sio.dropwizard.Configuration#setServerFactory(Lio/dropwizard/server/ServerFactory;)Vì
+9setLoggingFactory(Lio/dropwizard/logging/LoggingFactory;)Vio.dropwizard.Configuration#setLoggingFactory(Lio/dropwizard/logging/LoggingFactory;)Vì
+9setMetricsFactory(Lio/dropwizard/metrics/MetricsFactory;)Vio.dropwizard.Configuration#setMetricsFactory(Lio/dropwizard/metrics/MetricsFactory;)Vl
+getLoggingFactory()Uio.dropwizard.Configuration#getLoggingFactory()Lio/dropwizard/logging/LoggingFactory;é
+Xuk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfigurationio.dropwizard.Configurationn
+<init>()buk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#<init>()Vö
+setVersion(Ljava/lang/String;)xuk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#setVersion(Ljava/lang/String;)Vá
+getVersion()wuk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#getVersion()Ljava/lang/String;‚
+io.dropwizard.setup.Environmentjava.lang.Objectà
+getHealthCheckExecutorService()eio.dropwizard.setup.Environment#getHealthCheckExecutorService()Ljava/util/concurrent/ExecutorService;X
+admin()Mio.dropwizard.setup.Environment#admin()Lio/dropwizard/setup/AdminEnvironment;\
+getValidator()Jio.dropwizard.setup.Environment#getValidator()Ljavax/validation/Validator;q
+healthChecks()_io.dropwizard.setup.Environment#healthChecks()Lcom/codahale/metrics/health/HealthCheckRegistry;«
+–<init>(Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;Ljavax/validation/Validator;Lcom/codahale/metrics/MetricRegistry;Ljava/lang/ClassLoader;Lcom/codahale/metrics/health/HealthCheckRegistry;)Òio.dropwizard.setup.Environment#<init>(Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;Ljavax/validation/Validator;Lcom/codahale/metrics/MetricRegistry;Ljava/lang/ClassLoader;Lcom/codahale/metrics/health/HealthCheckRegistry;)VÂ
+ü<init>(Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;Ljavax/validation/Validator;Lcom/codahale/metrics/MetricRegistry;Ljava/lang/ClassLoader;)¿io.dropwizard.setup.Environment#<init>(Ljava/lang/String;Lcom/fasterxml/jackson/databind/ObjectMapper;Ljavax/validation/Validator;Lcom/codahale/metrics/MetricRegistry;Ljava/lang/ClassLoader;)Vy
+*setValidator(Ljavax/validation/Validator;)Kio.dropwizard.setup.Environment#setValidator(Ljavax/validation/Validator;)V[
+	metrics()Nio.dropwizard.setup.Environment#metrics()Lcom/codahale/metrics/MetricRegistry;b
+jersey()Vio.dropwizard.setup.Environment#jersey()Lio/dropwizard/jersey/setup/JerseyEnvironment;H
+	getName();io.dropwizard.setup.Environment#getName()Ljava/lang/String;n
+lifecycle()_io.dropwizard.setup.Environment#lifecycle()Lio/dropwizard/lifecycle/setup/LifecycleEnvironment;Ñ
+getApplicationContext()iio.dropwizard.setup.Environment#getApplicationContext()Lio/dropwizard/jetty/MutableServletContextHandler;x
+getAdminContext()cio.dropwizard.setup.Environment#getAdminContext()Lio/dropwizard/jetty/MutableServletContextHandler;f
+
+servlets()Xio.dropwizard.setup.Environment#servlets()Lio/dropwizard/jetty/setup/ServletEnvironment;s
+getObjectMapper()^io.dropwizard.setup.Environment#getObjectMapper()Lcom/fasterxml/jackson/databind/ObjectMapper;q
+getJerseyServletContainer()Rio.dropwizard.setup.Environment#getJerseyServletContainer()Ljavax/servlet/Servlet;ã
+/com.codahale.metrics.health.HealthCheckRegistryjava.lang.Object]
+
+getNames()Ocom.codahale.metrics.health.HealthCheckRegistry#getNames()Ljava/util/SortedSet; 
+@runHealthChecks(Lcom/codahale/metrics/health/HealthCheckFilter;)Öcom.codahale.metrics.health.HealthCheckRegistry#runHealthChecks(Lcom/codahale/metrics/health/HealthCheckFilter;)Ljava/util/SortedMap;«
+IremoveListener(Lcom/codahale/metrics/health/HealthCheckRegistryListener;)zcom.codahale.metrics.health.HealthCheckRegistry#removeListener(Lcom/codahale/metrics/health/HealthCheckRegistryListener;)Vø
+Eregister(Ljava/lang/String;Lcom/codahale/metrics/health/HealthCheck;)vcom.codahale.metrics.health.HealthCheckRegistry#register(Ljava/lang/String;Lcom/codahale/metrics/health/HealthCheck;)Vñ
+frunHealthChecks(Ljava/util/concurrent/ExecutorService;Lcom/codahale/metrics/health/HealthCheckFilter;)´com.codahale.metrics.health.HealthCheckRegistry#runHealthChecks(Ljava/util/concurrent/ExecutorService;Lcom/codahale/metrics/health/HealthCheckFilter;)Ljava/util/SortedMap;∑
+7runHealthChecks(Ljava/util/concurrent/ExecutorService;)|com.codahale.metrics.health.HealthCheckRegistry#runHealthChecks(Ljava/util/concurrent/ExecutorService;)Ljava/util/SortedMap;I
+
+shutdown();com.codahale.metrics.health.HealthCheckRegistry#shutdown()VG
+	<init>(I):com.codahale.metrics.health.HealthCheckRegistry#<init>(I)V¡
+FaddListener(Lcom/codahale/metrics/health/HealthCheckRegistryListener;)wcom.codahale.metrics.health.HealthCheckRegistry#addListener(Lcom/codahale/metrics/health/HealthCheckRegistryListener;)V©
+"runHealthCheck(Ljava/lang/String;)Çcom.codahale.metrics.health.HealthCheckRegistry#runHealthCheck(Ljava/lang/String;)Lcom/codahale/metrics/health/HealthCheck$Result;‘
+OonHealthCheckAdded(Ljava/lang/String;Lcom/codahale/metrics/health/HealthCheck;)Äcom.codahale.metrics.health.HealthCheckRegistry#onHealthCheckAdded(Ljava/lang/String;Lcom/codahale/metrics/health/HealthCheck;)Vk
+runHealthChecks()Vcom.codahale.metrics.health.HealthCheckRegistry#runHealthChecks()Ljava/util/SortedMap;ì
+createExecutorService(I)wcom.codahale.metrics.health.HealthCheckRegistry#createExecutorService(I)Ljava/util/concurrent/ScheduledExecutorService;°
+"getHealthCheck(Ljava/lang/String;){com.codahale.metrics.health.HealthCheckRegistry#getHealthCheck(Ljava/lang/String;)Lcom/codahale/metrics/health/HealthCheck;q
+unregister(Ljava/lang/String;)Ocom.codahale.metrics.health.HealthCheckRegistry#unregister(Ljava/lang/String;)VE
+<init>()9com.codahale.metrics.health.HealthCheckRegistry#<init>()V£
+7<init>(Ljava/util/concurrent/ScheduledExecutorService;)hcom.codahale.metrics.health.HealthCheckRegistry#<init>(Ljava/util/concurrent/ScheduledExecutorService;)Vÿ
+QonHealthCheckRemoved(Ljava/lang/String;Lcom/codahale/metrics/health/HealthCheck;)Çcom.codahale.metrics.health.HealthCheckRegistry#onHealthCheckRemoved(Ljava/lang/String;Lcom/codahale/metrics/health/HealthCheck;)VÊ
+com.google.inject.Guicejava.lang.Object¿
+DcreateInjector(Lcom/google/inject/Stage;[Lcom/google/inject/Module;)xcom.google.inject.Guice#createInjector(Lcom/google/inject/Stage;[Lcom/google/inject/Module;)Lcom/google/inject/Injector;é
++createInjector([Lcom/google/inject/Module;)_com.google.inject.Guice#createInjector([Lcom/google/inject/Module;)Lcom/google/inject/Injector;Ä
+$createInjector(Ljava/lang/Iterable;)Xcom.google.inject.Guice#createInjector(Ljava/lang/Iterable;)Lcom/google/inject/Injector;-
+<init>()!com.google.inject.Guice#<init>()V≤
+=createInjector(Lcom/google/inject/Stage;Ljava/lang/Iterable;)qcom.google.inject.Guice#createInjector(Lcom/google/inject/Stage;Ljava/lang/Iterable;)Lcom/google/inject/Injector;.
+com.google.inject.Injectorjava.lang.Object§
+,io.dropwizard.jersey.setup.JerseyEnvironmentjava.lang.Objecth
+register(Ljava/lang/Class;)Iio.dropwizard.jersey.setup.JerseyEnvironment#register(Ljava/lang/Class;)VÜ
+getResourceConfig()oio.dropwizard.jersey.setup.JerseyEnvironment#getResourceConfig()Lio/dropwizard/jersey/DropwizardResourceConfig;Ü
+*replace(Lcom/google/common/base/Function;)Xio.dropwizard.jersey.setup.JerseyEnvironment#replace(Lcom/google/common/base/Function;)VÅ
+getProperty(Ljava/lang/String;)^io.dropwizard.jersey.setup.JerseyEnvironment#getProperty(Ljava/lang/String;)Ljava/lang/Object;t
+!setUrlPattern(Ljava/lang/String;)Oio.dropwizard.jersey.setup.JerseyEnvironment#setUrlPattern(Ljava/lang/String;)Vj
+register(Ljava/lang/Object;)Jio.dropwizard.jersey.setup.JerseyEnvironment#register(Ljava/lang/Object;)Vl
+packages([Ljava/lang/String;)Kio.dropwizard.jersey.setup.JerseyEnvironment#packages([Ljava/lang/String;)VD
+	disable()7io.dropwizard.jersey.setup.JerseyEnvironment#disable()Vf
+enable(Ljava/lang/String;)Hio.dropwizard.jersey.setup.JerseyEnvironment#enable(Ljava/lang/String;)Va
+getUrlPattern()Nio.dropwizard.jersey.setup.JerseyEnvironment#getUrlPattern()Ljava/lang/String;h
+disable(Ljava/lang/String;)Iio.dropwizard.jersey.setup.JerseyEnvironment#disable(Ljava/lang/String;)Vé
+.property(Ljava/lang/String;Ljava/lang/Object;)\io.dropwizard.jersey.setup.JerseyEnvironment#property(Ljava/lang/String;Ljava/lang/Object;)VÖ
+i<init>(Lio/dropwizard/jersey/setup/JerseyContainerHolder;Lio/dropwizard/jersey/DropwizardResourceConfig;)óio.dropwizard.jersey.setup.JerseyEnvironment#<init>(Lio/dropwizard/jersey/setup/JerseyContainerHolder;Lio/dropwizard/jersey/DropwizardResourceConfig;)VÅ
 Huk.co.danielbryant.djshopping.productcatalogue.resources.ProductResourcejava.lang.ObjectÔ
 P<init>(Luk/co/danielbryant/djshopping/productcatalogue/services/ProductService;)öuk.co.danielbryant.djshopping.productcatalogue.resources.ProductResource#<init>(Luk/co/danielbryant/djshopping/productcatalogue/services/ProductService;)Và
 getAllProducts()tuk.co.danielbryant.djshopping.productcatalogue.resources.ProductResource#getAllProducts()Ljavax/ws/rs/core/Response;•
@@ -490,21 +580,7 @@ hashCode()java.util.Optional#hashCode()IL
 empty().java.util.Optional#empty()Ljava/util/Optional;w
 &filter(Ljava/util/function/Predicate;)Mjava.util.Optional#filter(Ljava/util/function/Predicate;)Ljava/util/Optional;.
 isPresent()java.util.Optional#isPresent()Z@
-stream()4java.util.Optional#stream()Ljava/util/stream/Stream;¨
-io.dropwizard.Configurationjava.lang.Objecth
-getServerFactory()Rio.dropwizard.Configuration#getServerFactory()Lio/dropwizard/server/ServerFactory;l
-getMetricsFactory()Uio.dropwizard.Configuration#getMetricsFactory()Lio/dropwizard/metrics/MetricsFactory;1
-<init>()%io.dropwizard.Configuration#<init>()VF
-
-toString()8io.dropwizard.Configuration#toString()Ljava/lang/String;ç
-6setServerFactory(Lio/dropwizard/server/ServerFactory;)Sio.dropwizard.Configuration#setServerFactory(Lio/dropwizard/server/ServerFactory;)Vì
-9setLoggingFactory(Lio/dropwizard/logging/LoggingFactory;)Vio.dropwizard.Configuration#setLoggingFactory(Lio/dropwizard/logging/LoggingFactory;)Vì
-9setMetricsFactory(Lio/dropwizard/metrics/MetricsFactory;)Vio.dropwizard.Configuration#setMetricsFactory(Lio/dropwizard/metrics/MetricsFactory;)Vl
-getLoggingFactory()Uio.dropwizard.Configuration#getLoggingFactory()Lio/dropwizard/logging/LoggingFactory;é
-Xuk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfigurationio.dropwizard.Configurationn
-<init>()buk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#<init>()Vö
-setVersion(Ljava/lang/String;)xuk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#setVersion(Ljava/lang/String;)Vá
-getVersion()wuk.co.danielbryant.djshopping.productcatalogue.configuration.ProductServiceConfiguration#getVersion()Ljava/lang/String;(
+stream()4java.util.Optional#stream()Ljava/util/stream/Stream;(
 java.lang.Comparablejava.lang.Object(
 java.io.Serializablejava.lang.Object¿
 java.lang.Numberjava.lang.Objectjava.io.Serializable.

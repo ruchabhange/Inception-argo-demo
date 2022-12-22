@@ -1,1 +1,1 @@
-uk.co.danielbryant.djshopping.shopfront.services.dto.StockDTO#getSku()Ljava/lang/String;
+uk.co.danielbryant.djshopping.shopfront.model.Product#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/math/BigDecimal;I)V

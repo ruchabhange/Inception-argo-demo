@@ -1,3 +1,1 @@
-uk.co.danielbryant.djshopping.shopfront.ShopfrontApplication#getRestTemplate()Lorg/springframework/web/client/RestTemplate;
-org.springframework.web.client.RestTemplate#<init>()V
-org.springframework.web.client.RestTemplate#instance-init#
+uk.co.danielbryant.djshopping.shopfront.services.dto.ProductDTO#getPrice()Ljava/math/BigDecimal;

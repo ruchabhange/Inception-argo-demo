@@ -1,21 +1,18 @@
 
-{uk.co.danielbryant.djshopping.shopfront.ShopfrontApplication#getRestTemplate()Lorg/springframework/web/client/RestTemplate;Â
-·/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/ShopfrontApplication.java ('"1*É
-1Â
-·/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/ShopfrontApplication.java (!¨¥
-Â
-·/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/ShopfrontApplication.java (1
-%0+org.springframework.web.client.RestTemplate"+org.springframework.web.client.RestTemplateÖ
-Ó
-Â
-·/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/ShopfrontApplication.java (!
-%1"5org.springframework.web.client.RestTemplate#<init>()V*O
+`uk.co.danielbryant.djshopping.shopfront.services.dto.ProductDTO#getPrice()Ljava/math/BigDecimal;Å
+º/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/ProductDTO.java! !("1*
+1Å
+º/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/ProductDTO.java" "(Ù
+Ö
+Å
+º/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/ProductDTO.java" "(
+%0java.math.BigDecimal"__id*j
 
-__unknown_file (3
-1
-%0+org.springframework.web.client.RestTemplate"ú
-Â
-·/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/ShopfrontApplication.java ("3
-1
-%0+org.springframework.web.client.RestTemplateB@>
-<uk.co.danielbryant.djshopping.shopfront.ShopfrontApplicationH
+__unknown_file (N*LA
+?uk.co.danielbryant.djshopping.shopfront.services.dto.ProductDTO"
+price"æ
+Å
+º/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/ProductDTO.java" "(
+
+%0java.math.BigDecimalBCA
+?uk.co.danielbryant.djshopping.shopfront.services.dto.ProductDTOH

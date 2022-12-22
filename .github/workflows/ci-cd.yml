@@ -102,11 +102,30 @@ jobs:
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+    - name: Test Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report 
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: JEST Tests            # Name of the check run which will be created
+        path: target/surefire-reports/TEST-*.xml    # Path to test results
+        reporter: java-junit       # Format of test results
+        fail-on-error: 'false'
+    - name: Read output variables
+      run: |
+         echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        junit_files: "target/surefire-reports/TEST-*.xml"
     - name: Build and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ruchabhange_Inception-argo-demo
+
+
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:

@@ -108,17 +108,22 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: JEST Tests            # Name of the check run which will be created
-        path: target/surefire-reports/TEST-*.xml    # Path to test results
+        path: ./java-sample-application/source-code/shopfront/target/surefire-reports/TEST-*.xml    # Path to test results
         reporter: java-junit       # Format of test results
         fail-on-error: 'false'
     - name: Read output variables
       run: |
          echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
-    - name: Publish Test Results
+    - name: Publish Test Results for shopfront
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        junit_files: "target/surefire-reports/TEST-*.xml"
+        junit_files: "./java-sample-application/source-code/shopfront/target/surefire-reports/TEST-*.xml"
+    - name: Publish Test Results for productcatalogue
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        junit_files: "./java-sample-application/source-code/productcatalogue/target/surefire-reports/TEST-*.xml"
     - name: Build and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any

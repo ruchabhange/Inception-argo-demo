@@ -1,18 +1,18 @@
 
-Xuk.co.danielbryant.djshopping.shopfront.services.dto.StockDTO#getSku()Ljava/lang/String;Ã
-¸/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/StockDTO.java ("1*þ
-1Ã
-¸/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/StockDTO.java (Ï
-Ì
-Ã
-¸/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/StockDTO.java (
-%0java.lang.String"__id*f
+Ouk.co.danielbryant.djshopping.shopfront.model.Product#getId()Ljava/lang/String;»
+°/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/model/Product.java ("1*Ý
+1»
+°/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/model/Product.java (¾
+»
+»
+°/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/model/Product.java (
+%0java.lang.String"__id*]
 
-__unknown_file (J*H?
-=uk.co.danielbryant.djshopping.shopfront.services.dto.StockDTO"
-sku"à
-Ã
-¸/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/services/dto/StockDTO.java (
+__unknown_file (A*?7
+5uk.co.danielbryant.djshopping.shopfront.model.Product"
+id"Ø
+»
+°/home/runner/work/Inception-argo-demo/Inception-argo-demo/java-sample-application/source-code/shopfront/src/main/java/uk/co/danielbryant/djshopping/shopfront/model/Product.java (
 
-%0java.lang.StringBA?
-=uk.co.danielbryant.djshopping.shopfront.services.dto.StockDTOH
+%0java.lang.StringB97
+5uk.co.danielbryant.djshopping.shopfront.model.ProductH

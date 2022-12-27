@@ -96,13 +96,13 @@ jobs:
     #  uses: einaregilsson/build-number@v3 
     #  with:
     #    token: ${{secrets.github_token}}   
-    
+
 
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml 
+           mvn -B package --file pom.xml -Dmy_variable=${GITHUB_REPOSITORY}
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false -X
-           mvn deploy 
+           mvn deploy -Dmy_variable=${GITHUB_REPOSITORY}
       env:
           
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}

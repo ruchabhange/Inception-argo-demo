@@ -4,10 +4,17 @@ on:
     branches:
       - master
       - 'feature/**'
+    paths:
+      - ${{ secrets.FILE_CHANGE_PATH_1 }}
+      - ${{ secrets.FILE_CHANGE_PATH_2 }}
   pull_request:
     branches:
       - master
       - 'feature/**'
+    paths:
+      - ${{ secrets.FILE_CHANGE_PATH_1 }}
+      - ${{ secrets.FILE_CHANGE_PATH_2 }}
+
 jobs:
   compile:
     runs-on: ubuntu-20.04
@@ -108,7 +115,7 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: JEST Tests            # Name of the check run which will be created
-        path: ./java-sample-application/source-code/shopfront/target/surefire-reports/TEST-*.xml    # Path to test results
+        path: ${{ secrets.TEST_RESULT_PATH }}    # Path to test results
         reporter: java-junit       # Format of test results
         fail-on-error: 'false'
     - name: Read output variables
@@ -118,17 +125,13 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        junit_files: "./java-sample-application/source-code/shopfront/target/surefire-reports/TEST-*.xml"
-    - name: Publish Test Results for productcatalogue
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
-      with:
-        junit_files: "./java-sample-application/source-code/productcatalogue/target/surefire-reports/TEST-*.xml"
+        junit_files: "${{ secrets.TEST_RESULT_PATH }} "
+
     - name: Build and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ruchabhange_Inception-argo-demo
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey= ${{ secrets.SONAR_PROJECTKEY }}
 
 
     - name: Login to DockerHub
@@ -137,42 +140,43 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     
-    - name: File changes for productcatalouge 
-      id: productcatalouge
-      uses: tj-actions/changed-files@v34
-      with:
-        files: |
-            /java-sample-application/source-code/productcatalogue/**
+    #- name: File changes for productcatalouge 
+    #  id: productcatalouge
+    #  uses: tj-actions/changed-files@v34
+    #  with:
+    #    files: |
+    #        /java-sample-application/source-code/productcatalogue/**
     
     -  name: Build and push productcatalouge image
        #if: steps.productcatalouge.outputs.any_changed == 'true'
-       env:
-         image-name-productcatalogue: productcatalouge-image
+    #   env:
+    #     image-name-productcatalogue: productcatalouge-image
          
        id: build-and-push-productcatalouge-image
        uses: docker/build-push-action@v3
        with:
-        context: ./java-sample-application/source-code/productcatalogue
+        context: ${{secrets.DOCKER_FILE_PATH_1 }}
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.image-name-productcatalogue }}:${{ github.sha }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}
     
-    - name: File changes for shopfront
-      id: shopfront
-      uses: tj-actions/changed-files@v34
-      with:
-        files: |
-            /java-sample-application/source-code/shopfront/**
+    #- name: File changes for shopfront
+    #  id: shopfront
+    #  uses: tj-actions/changed-files@v34
+    #  with:
+    #    files: |
+    #        /java-sample-application/source-code/shopfront/**
+
     -  name: Build and push shopfront image
      #  if: steps.shopfront.outputs.any_changed == 'true'
-       env:
-         image-name-shopfront: shopfront-image
+    #   env:
+    #     image-name-shopfront: shopfront-image
          
        id: build-and-push-shopfront-image
        uses: docker/build-push-action@v3
        with:
-        context: ./java-sample-application/source-code/shopfront
+        context: ${{secrets.DOCKER_FILE_PATH_2 }}
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.image-name-shopfront }}:${{ github.sha }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}
         
     -  name: Update Version for productcatalouge image
        #if: steps.productcatalouge.outputs.any_changed == 'true'
@@ -205,7 +209,7 @@ jobs:
     - name: Run Trivy vulnerability scanner image catalog
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'docker.io/ruchabhange/productcatalouge-image:${{ github.sha }}'
+        image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}'
         format: 'table'
 #        exit-code: '1'
         ignore-unfixed: true
@@ -214,7 +218,7 @@ jobs:
     - name: Run Trivy vulnerability scanner for shopfront
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'docker.io/ruchabhange/shopfront-image:${{ github.sha }}'
+        image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}'
         format: 'template'
 #        exit-code: '1'
         template: '@/contrib/sarif.tpl'

@@ -148,14 +148,14 @@ jobs:
     #        /java-sample-application/source-code/productcatalogue/**
     
     - name: Build Docker container
-     working-directory: ${{secrets.DOCKER_FILE_PATH_1 }}
-     run: |
-       docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }} .
+      working-directory: ${{secrets.DOCKER_FILE_PATH_1 }}
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }} .
 
     - name: Build Docker container
-     working-directory: ${{secrets.DOCKER_FILE_PATH_2 }}
-     run: |
-       docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }} .
+      working-directory: ${{secrets.DOCKER_FILE_PATH_2 }}
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }} .
         
     - name: Run Trivy vulnerability scanner image catalog
       uses: aquasecurity/trivy-action@master

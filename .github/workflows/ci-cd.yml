@@ -49,6 +49,7 @@ jobs:
         run: mvn -B compile 
   security:
     runs-on: ubuntu-latest
+    if: contains(fromJson('["pull_request"]'), github.event_name )|| (github.ref == 'refs/heads/master')
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities (Monitor only)
@@ -90,12 +91,6 @@ jobs:
     - name: Extract Maven project version
       run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
       id: project
-
-    #- name: Generate build number
-    #  id: buildnumber
-    #  uses: einaregilsson/build-number@v3 
-    #  with:
-    #    token: ${{secrets.github_token}}   
 
 
     - name: Build project with Maven
@@ -142,14 +137,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     
-    #- name: File changes for productcatalouge 
-    #  id: productcatalouge
-    #  uses: tj-actions/changed-files@v34
-    #  with:
-    #    files: |
-    #        /java-sample-application/source-code/productcatalogue/**
 
-    
     - name: Build Docker container
       working-directory: ${{secrets.DOCKER_FILE_PATH_1 }}
       run: |
@@ -190,37 +178,6 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}
 
-
-  #  -  name: Build and push productcatalouge image
-  #     #if: steps.productcatalouge.outputs.any_changed == 'true'
-  #  #   env:
-  #  #     image-name-productcatalogue: productcatalouge-image
-  #       
-  #     id: build-and-push-productcatalouge-image
-  #     uses: docker/build-push-action@v3
-  #     with:
-  #      context: ${{secrets.DOCKER_FILE_PATH_1 }}
-  #      push: true
-  #      tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}
-    
-    #- name: File changes for shopfront
-    #  id: shopfront
-    #  uses: tj-actions/changed-files@v34
-    #  with:
-    #    files: |
-    #        /java-sample-application/source-code/shopfront/**
-
-  #  -  name: Build and push shopfront image
-  #   #  if: steps.shopfront.outputs.any_changed == 'true'
-  #  #   env:
-  #  #     image-name-shopfront: shopfront-image
-  #       
-  #     id: build-and-push-shopfront-image
-  #     uses: docker/build-push-action@v3
-  #     with:
-  #      context: ${{secrets.DOCKER_FILE_PATH_2 }}
-  #      push: true
-  #      tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}
         
     -  name: Update Version for productcatalouge image
        #if: steps.productcatalouge.outputs.any_changed == 'true'

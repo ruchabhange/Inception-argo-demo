@@ -147,6 +147,7 @@ jobs:
     #    files: |
     #        /java-sample-application/source-code/productcatalogue/**
     
+    
     - name: Build Docker container
       working-directory: ${{secrets.DOCKER_FILE_PATH_1 }}
       run: |

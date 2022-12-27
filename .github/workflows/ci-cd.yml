@@ -99,7 +99,7 @@ jobs:
 
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml 
+           mvn -B package --file pom.xml -DGITHUB_REPOSITORY=${GITHUB_REPOSITORY}
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false -X
            mvn deploy  
       env:

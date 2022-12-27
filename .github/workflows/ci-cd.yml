@@ -99,14 +99,15 @@ jobs:
 
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml -Dgithub_repo=${{ env.GITHUB_REPO }}
+           mvn -B package --file pom.xml -Dgithub_repo=${{ secrets.OWNER_REPO_NAME }}
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false -X
-           mvn deploy -Dgithub_repo=${{ env.GITHUB_REPO }}
+           mvn deploy -Dgithub_repo=${{ secrets.OWNER_REPO_NAME }}
       env:
-          GITHUB_REPO: ${GITHUB_REPOSITORY}
+          
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
 
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
+          
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
     - name: Test Report

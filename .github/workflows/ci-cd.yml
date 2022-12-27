@@ -99,9 +99,9 @@ jobs:
 
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml -DGITHUB_REPOSITORY=${GITHUB_REPOSITORY}
+           mvn -B package --file pom.xml -Dgithub_repo=$GITHUB_REPOSITORY
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false -X
-           mvn deploy -DGITHUB_REPOSITORY=${GITHUB_REPOSITORY}
+           mvn deploy -Dgithub_repo=$GITHUB_REPOSITORY
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}

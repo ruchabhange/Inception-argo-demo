@@ -12,7 +12,7 @@
             <repository>
               <id>github</id>
               <name>inception</name>
-              <url>https://maven.pkg.github.com/${GITHUB_REPOSITORY}</url>
+              <url>https://maven.pkg.github.com/${github_repo}</url>
             </repository>
     </distributionManagement>
     <profiles>

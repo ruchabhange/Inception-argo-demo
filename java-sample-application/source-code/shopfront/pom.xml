@@ -16,25 +16,11 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.22.RELEASE</version>
     </parent>
-    <distributionManagement>
-            <repository>
-              <id>github</id>
-              <name>inception</name>
-              <url>https://maven.pkg.github.com/ruchabhange/Inception-argo-demo</url>
-            </repository>
-    </distributionManagement>
-    <profiles>
-        <profile>
-            <id>github</id>
-        </profile>
-    </profiles>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <junit.jupiter.version>5.2.0</junit.jupiter.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
-        <sonar.organization>ruchabhange</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
     </properties>
 

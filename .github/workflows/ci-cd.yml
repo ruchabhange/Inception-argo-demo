@@ -4,16 +4,16 @@ on:
     branches:
       - master
       - 'feature/**'
-    paths:
-      - ${{ secrets.FILE_CHANGE_PATH_1 }}
-      - ${{ secrets.FILE_CHANGE_PATH_2 }}
+  #  paths:
+  #    - ${{ secrets.FILE_CHANGE_PATH_1 }}
+  #    - ${{ secrets.FILE_CHANGE_PATH_2 }}
   pull_request:
     branches:
       - master
       - 'feature/**'
-    paths:
-      - ${{ secrets.FILE_CHANGE_PATH_1 }}
-      - ${{ secrets.FILE_CHANGE_PATH_2 }}
+  #  paths:
+  #    - ${{ secrets.FILE_CHANGE_PATH_1 }}
+  #    - ${{ secrets.FILE_CHANGE_PATH_2 }}
 
 jobs:
   compile:

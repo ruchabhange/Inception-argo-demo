@@ -91,11 +91,11 @@ jobs:
       run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
       id: project
 
-    - name: Generate build number
-      id: buildnumber
-      uses: einaregilsson/build-number@v3 
-      with:
-        token: ${{secrets.github_token}}   
+    #- name: Generate build number
+    #  id: buildnumber
+    #  uses: einaregilsson/build-number@v3 
+    #  with:
+    #    token: ${{secrets.github_token}}   
 
     - name: Build project with Maven
       run: | 
@@ -146,7 +146,7 @@ jobs:
     #  with:
     #    files: |
     #        /java-sample-application/source-code/productcatalogue/**
-    
+
     
     - name: Build Docker container
       working-directory: ${{secrets.DOCKER_FILE_PATH_1 }}

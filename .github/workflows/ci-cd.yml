@@ -147,17 +147,58 @@ jobs:
     #    files: |
     #        /java-sample-application/source-code/productcatalogue/**
     
-    -  name: Build and push productcatalouge image
-       #if: steps.productcatalouge.outputs.any_changed == 'true'
-    #   env:
-    #     image-name-productcatalogue: productcatalouge-image
-         
-       id: build-and-push-productcatalouge-image
-       uses: docker/build-push-action@v3
-       with:
-        context: ${{secrets.DOCKER_FILE_PATH_1 }}
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}
+    - name: Build Docker container
+     working-directory: ${{secrets.DOCKER_FILE_PATH_1 }}
+     run: |
+       docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }} .
+
+    - name: Build Docker container
+     working-directory: ${{secrets.DOCKER_FILE_PATH_2 }}
+     run: |
+       docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }} .
+        
+    - name: Run Trivy vulnerability scanner image catalog
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}'
+        format: 'table'
+#        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
+    - name: Run Trivy vulnerability scanner for shopfront
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}'
+        format: 'template'
+#        exit-code: '1'
+        template: '@/contrib/sarif.tpl'
+        output: 'trivy-results.sarif'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
+    - name: Upload trivy scan results to github security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+    - name: Docker push
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}
+
+
+  #  -  name: Build and push productcatalouge image
+  #     #if: steps.productcatalouge.outputs.any_changed == 'true'
+  #  #   env:
+  #  #     image-name-productcatalogue: productcatalouge-image
+  #       
+  #     id: build-and-push-productcatalouge-image
+  #     uses: docker/build-push-action@v3
+  #     with:
+  #      context: ${{secrets.DOCKER_FILE_PATH_1 }}
+  #      push: true
+  #      tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}
     
     #- name: File changes for shopfront
     #  id: shopfront
@@ -166,17 +207,17 @@ jobs:
     #    files: |
     #        /java-sample-application/source-code/shopfront/**
 
-    -  name: Build and push shopfront image
-     #  if: steps.shopfront.outputs.any_changed == 'true'
-    #   env:
-    #     image-name-shopfront: shopfront-image
-         
-       id: build-and-push-shopfront-image
-       uses: docker/build-push-action@v3
-       with:
-        context: ${{secrets.DOCKER_FILE_PATH_2 }}
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}
+  #  -  name: Build and push shopfront image
+  #   #  if: steps.shopfront.outputs.any_changed == 'true'
+  #  #   env:
+  #  #     image-name-shopfront: shopfront-image
+  #       
+  #     id: build-and-push-shopfront-image
+  #     uses: docker/build-push-action@v3
+  #     with:
+  #      context: ${{secrets.DOCKER_FILE_PATH_2 }}
+  #      push: true
+  #      tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}
         
     -  name: Update Version for productcatalouge image
        #if: steps.productcatalouge.outputs.any_changed == 'true'
@@ -206,28 +247,5 @@ jobs:
        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: Image version updated
-    - name: Run Trivy vulnerability scanner image catalog
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_1 }}:${{ github.sha }}'
-        format: 'table'
-#        exit-code: '1'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
-    - name: Run Trivy vulnerability scanner for shopfront
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME_2 }}:${{ github.sha }}'
-        format: 'template'
-#        exit-code: '1'
-        template: '@/contrib/sarif.tpl'
-        output: 'trivy-results.sarif'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
-    - name: Upload trivy scan results to github security tab
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: 'trivy-results.sarif'
+    
         

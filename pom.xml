@@ -12,7 +12,7 @@
             <repository>
               <id>github</id>
               <name>inception</name>
-              <url>https://maven.pkg.github.com/ruchabhange/Inception-argo-demo</url>
+              <url>https://maven.pkg.github.com/${{ secrets.OWNER_REPO_NAME }}</url>
             </repository>
     </distributionManagement>
     <profiles>

@@ -35,12 +35,12 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: 'ruchabhange/productcatalouge-image:72340355fbfac0365c5970b66e6599dacdd2029b'
+        value: 'ruchabhange/productcatalouge-image:eda49be4ad87d419e893350245cba0c4b31d295b'
   - target:
       kind: Deployment
       name: shopfront
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: 'ruchabhange/shopfront-image:72340355fbfac0365c5970b66e6599dacdd2029b'
+        value: 'ruchabhange/shopfront-image:eda49be4ad87d419e893350245cba0c4b31d295b'
 

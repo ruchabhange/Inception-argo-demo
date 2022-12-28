@@ -103,7 +103,6 @@ jobs:
       run: | 
            mvn -B package --file pom.xml -Dmy_variable=${GITHUB_REPOSITORY}
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false -X
-           mvn deploy -Dmy_variable=${GITHUB_REPOSITORY}
       env:
           
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
@@ -139,6 +138,7 @@ jobs:
     - name: Publish package on Github packages
       run: | 
            mvn deploy -Dmy_variable=${GITHUB_REPOSITORY}
+           mvn versions:revert
       env:
           
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
